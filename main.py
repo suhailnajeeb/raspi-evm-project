@@ -75,38 +75,38 @@ def main():
   GPIO.setup(LCD_D5, GPIO.OUT) # DB5
   GPIO.setup(LCD_D6, GPIO.OUT) # DB6
   GPIO.setup(LCD_D7, GPIO.OUT) # DB7
-  GPIO.setup(vote1_in, GPIO.IN)
-  GPIO.setup(vote2_in, GPIO.IN)
-  GPIO.setup(vote3_in, GPIO.IN)
-  GPIO.setup(vote4_in, GPIO.IN)
-  GPIO.setup(result, GPIO.IN)
+  GPIO.setup(vote1_in, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+  GPIO.setup(vote2_in, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+  GPIO.setup(vote3_in, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+  GPIO.setup(vote4_in, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+  GPIO.setup(result, GPIO.IN, pull_up_down = GPIO.PUD_UP)
  
   # Initialise display
   lcd_init()
  
   while True:
     # Send some test
-    if GPIO.input(vote1_in) == 1:
+    if GPIO.input(vote1_in) == 0:
       lcd_string("Vote Registered", LCD_LINE_1)
       lcd_string("for Candidate 1", LCD_LINE_2)
       vote1 += 1
       time.sleep(1)
-    if GPIO.input(vote2_in) == 1:
+    if GPIO.input(vote2_in) == 0:
       lcd_string("Vote Registered", LCD_LINE_1)
       lcd_string("for Candidate 2", LCD_LINE_2)
       vote2 += 1
       time.sleep(1)
-    if GPIO.input(vote3_in) == 1:
+    if GPIO.input(vote3_in) == 0:
       lcd_string("Vote Registered", LCD_LINE_1)
       lcd_string("for Candidate 3", LCD_LINE_2)
       vote3 += 1
       time.sleep(1)
-    if GPIO.input(vote4_in) == 1:
+    if GPIO.input(vote4_in) == 0:
       lcd_string("Vote Registered", LCD_LINE_1)
       lcd_string("for Candidate 4", LCD_LINE_2)
       vote4 += 4
       time.sleep(1)
-    if GPIO.input(result) == 1:
+    if GPIO.input(result) == 0:
       lcd_string("Showing Results:", LCD_LINE_1)
       lcd_string("....", LCD_LINE_2)
       time.sleep(1)
